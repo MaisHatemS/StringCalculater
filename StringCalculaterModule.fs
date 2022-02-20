@@ -8,7 +8,6 @@ type StringCalculator()=
       match expression with 
       |"" -> 0
       |_ when expression.Contains ',' ->
-           let numbers=expression.Split[|','|]
-           (Int32.Parse numbers.[0])+(Int32.Parse numbers.[1])
+         [for n in expression.Split[|','|]-> Int32.Parse n] |> List.sum  //Allow the Add method to handle an unknown amount of numbers
       |_-> Int32.Parse expression
 
