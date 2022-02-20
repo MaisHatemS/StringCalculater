@@ -29,3 +29,11 @@ type stringCalculatr()=
     member x.Add_UnknownAmountOfNumber_ReturnTheirSum expression=
          let calc= StringCalculator()
          calc.add expression
+
+    
+    
+    [<TestCase("1\n2,4,5",ExpectedResult = 12)>]
+    [<TestCase("1\n2",ExpectedResult = 3)>]
+    member x.Add_NewLineBetweenTheNumbers_ReturnTheirSumOfthenumbers expression=
+         let calc= StringCalculator()
+         calc.add expression
