@@ -37,3 +37,27 @@ type stringCalculatr()=
     member x.Add_NewLineBetweenTheNumbers_ReturnTheirSumOfthenumbers expression=
          let calc= StringCalculator()
          calc.add expression
+
+    [<Test>]
+    member x.Add_EmptyStringwithdifferantDelimiters_ReturnZero()=
+         let calc= StringCalculator()
+         Assert.That(calc.add "//;\n",Is.EqualTo 0);
+
+    
+    [<TestCase("//;\n1",ExpectedResult = 1)>]
+    [<TestCase("//;\n2",ExpectedResult = 2)>]
+       member x.Add_SingleNumberWithDifferantDelimiters_ReturnsThatNumber expression=
+         let calc= StringCalculator()
+         calc.add expression
+
+    [<TestCase("//;\n1;3",ExpectedResult = 4)>]
+       member x.Add_TwoNumberwithDifferantDelimiters_ReturnTheSumation expression=
+          let calc=StringCalculator()
+          calc.add expression
+
+    [<TestCase("//;\n1;2;4;5;3",ExpectedResult = 15)>]
+       member x.Add_UnknownAmountOfNumberWithDifferantDelimiters_ReturnTheirSum expression=
+            let calc= StringCalculator()
+            calc.add expression
+
+     
