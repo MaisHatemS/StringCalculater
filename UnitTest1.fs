@@ -71,7 +71,13 @@ type stringCalculatr()=
             let calc = StringCalculator()
             Assert.That(calc.add expression,Is.EqualTo 2)
 
-    
+    [<TestCase("//[***]\n1***2***3",ExpectedResult =6 )>]
+    member x.Add_NumberWith_ManyDelimiters_ReturnSumationOfTheNumber expression=
+              let calc= StringCalculator()
+              calc.add expression
 
 
-     
+     [<TestCase("//[*][%]\n1*2%3",ExpectedResult = 6)>]
+       member  r.AddMoreThanTwoNumbersWithCustomDelimiterAnylength_ReturnsSummation expression = 
+           let calc = StringCalculator()
+           calc.add expression
