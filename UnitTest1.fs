@@ -66,5 +66,12 @@ type stringCalculatr()=
                  let exceptionMsg=  Assert.Throws(typeof<NegativeException>,fun()->calc.add expression |> ignore)
                  exceptionMsg.Message
 
+    [<TestCase("2,1001")>]
+       member x.IgnoreNumberAbove1000 expression=
+            let calc = StringCalculator()
+            Assert.That(calc.add expression,Is.EqualTo 2)
+
+    
+
 
      
