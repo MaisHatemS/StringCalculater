@@ -60,4 +60,11 @@ type stringCalculatr()=
             let calc= StringCalculator()
             calc.add expression
 
+    [<TestCase("1,-1,2,-3",ExpectedResult ="Negative is negatives not allowed [-1; -3]" )>]
+       member x.NigativeNumber_ReturnException expression=
+                 let calc= StringCalculator()
+                 let exceptionMsg=  Assert.Throws(typeof<NegativeException>,fun()->calc.add expression |> ignore)
+                 exceptionMsg.Message
+
+
      
