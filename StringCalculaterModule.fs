@@ -6,7 +6,7 @@ open System
 type NegativeException(negativeList)=
       inherit Exception(sprintf "Negative is negatives not allowed %A" negativeList)
 
-let stringdelimiters=['*';'[';']';'%'].ToString()
+let stringdelimiters="^.*[-!$%^&*()_+|~=`{}[\\]:;\'<>?,.\/]+.*$"
 
 
 let concatinateFunction (stringexpression:seq<string>) =
@@ -23,7 +23,7 @@ type StringCalculator()=
      |"" -> 0
      | _ when expression.StartsWith "//[" ->
                expression.Substring ((expression.IndexOf "\n")+1)|> 
-               String.filter(fun c -> not (stringdelimiters.Contains c||c='%'))|>Seq.map (fun c->c.ToString())
+               String.filter(fun c -> not (stringdelimiters.Contains c ))|>Seq.map (fun c->c.ToString())
                |>concatinateFunction|>addStringExpresstion [|';'|]
 
      |_ when expression.StartsWith "//"->

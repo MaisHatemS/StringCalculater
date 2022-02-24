@@ -78,7 +78,7 @@ type stringCalculatr()=
 
 
      [<TestCase("//[*][%]\n1*2%3",ExpectedResult = 6)>]
-     [<TestCase("//[*][%]\n1%***2%%%%%*****3",ExpectedResult = 6)>]
+     [<TestCase("//[*][%]\n1%***2%%%$2$$%%*****3",ExpectedResult = 8)>]
        member  r.AddMoreThanTwoNumbersWithCustomDelimiterAnylength_ReturnsSummation expression = 
            let calc = StringCalculator()
            calc.add expression
